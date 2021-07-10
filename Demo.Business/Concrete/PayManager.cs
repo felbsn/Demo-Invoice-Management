@@ -43,14 +43,15 @@ namespace Demo.Business.Concrete
                         Manager = manager
                     };
 
+
                     // add to database
                     payment = _payments.Add(payment);
 
+                   //throw new Exception("asd");
 
                     // some real cash transfer method ??
                     // maybe add this to some provision table before ??
                     // .....
-
 
                     // update invoice
                     invoice.IsPaid = true;
@@ -64,7 +65,7 @@ namespace Demo.Business.Concrete
                         Status = PaymentStatus.Success,
                         Payment = payment
                     };
-                }
+                 }
             }
             else
             {

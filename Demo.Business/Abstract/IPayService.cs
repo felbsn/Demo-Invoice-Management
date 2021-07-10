@@ -10,9 +10,11 @@ namespace Demo.Business.Abstract
         PaymentResult Pay(int invoiceId, PaymentPredentials paymentPredentials, PaymentMethod method, int managerId );
     }
 
-    public struct PaymentPredentials
+    public class PaymentPredentials
     {
         // some important stuff
+        public string CardId { get; set; }
+        public int CV2 { get; set; }
     }
 
     public enum PaymentStatus

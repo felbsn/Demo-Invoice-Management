@@ -60,20 +60,6 @@
     </tbody>
 </table>
 
-@if (ViewBag.Error != null)
-{
-    <div>Bir seyler oldular</div>
-}
-
-@if (ViewBag.Success != null)
-{
-    <div>Bir seyler oldular</div>
-}
-
-
-
-
-
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -107,7 +93,6 @@
         console.log(buttons);
         elm.addEventListener("click", function (ev) {
 
- 
             let value = elm.closest('tr').querySelector('.value').textContent;
             let res = confirm(`Pay ${value}?`)
             if (!res) {
@@ -116,6 +101,5 @@
             }
         })
     }
-
  
 </script>

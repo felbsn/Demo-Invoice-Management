@@ -1,0 +1,121 @@
+﻿@model IEnumerable<Demo.Entities.Client>
+
+
+@{
+    ViewData["Title"] = "Index";
+
+}
+
+@using Demo.Entities;
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="AddIndividual">Create New Individual</a>
+    <a asp-action="AddCorparate">Create New Corporate</a>
+</p>
+
+<div>
+    <div class="row">
+
+        <div class="col-3">
+
+            @using (Html.BeginForm("Index", "Client", FormMethod.Get))
+            {
+                <dl>
+                    <dt>
+                        Tax No
+                    </dt>
+                    <dt>
+                        @Html.TextBox("TaxNo")
+                    </dt>
+                </dl>
+                <p>OR</p>
+                <dl>
+                    <dt>
+                        Identity No
+                    </dt>
+                    <dt>
+                        @Html.TextBox("identitiyNo")
+                    </dt>
+                </dl>
+                <input type="submit" value="Search" class="btn btn-primary" />
+            }
+
+            <br />
+
+
+
+        </div>
+
+        <div class="col-9">
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Id)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PhoneNumber)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Email)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ClientNumber)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Password)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Id)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PhoneNumber)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ClientNumber)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Password)
+                            </td>
+                            <td>
+                                <div class="col-12 d-flex">
+                                    @Html.ActionLink("Subscriptions", "Index", "Subscription", new { id = item.Id }, new { @class = "btn btn-primary" })
+                                    @Html.ActionLink("Invoices", "Index", "Invoice", new { clientId = item.Id }, new { @class = "btn btn-secondary" })
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+

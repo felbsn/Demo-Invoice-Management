@@ -1,0 +1,33 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@using Demo.Entities
+@model Client
+
+@using (Html.BeginForm("login", "login", FormMethod.Post))
+{
+
+    <table>
+        <tr>
+            <td>Client Number</td>
+            <td> @Html.TextBoxFor(c => c.ClientNumber)</td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td>
+                @Html.PasswordFor(c => c.Password)
+            </td>
+        </tr>
+    </table>
+
+    <input class="btn btn-primary" type="submit" value="Submit" />
+
+}
+
+<br />
+
+<a class="btn btn-outline-primary" asp-area="" asp-controller="Login" asp-action="Manager">Manager Login</a>
+

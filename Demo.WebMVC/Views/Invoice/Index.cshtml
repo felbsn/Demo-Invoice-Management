@@ -1,0 +1,121 @@
+﻿@model IEnumerable<Demo.Entities.Invoice>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Value)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsPaid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpireTime)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    <div class="value">@Html.DisplayFor(modelItem => item.Value)</div>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsPaid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreateTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExpireTime)
+                </td>
+                <td>
+                    @using (Html.BeginForm("Pay", "Invoice", new { invoiceId = item.Id }))
+                    {
+                        <input type="submit"  value="Pay" class="btn btn-primary sure" />
+                    }
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (ViewBag.Error != null)
+{
+    <div>Bir seyler oldular</div>
+}
+
+@if (ViewBag.Success != null)
+{
+    <div>Bir seyler oldular</div>
+}
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Button trigger modal -->
+<script>
+
+    var buttons = document.querySelectorAll('.sure');
+    for (let i = 0; i < buttons.length; i++) {
+        let elm = buttons[i];
+        console.log(buttons);
+        elm.addEventListener("click", function (ev) {
+
+ 
+            let value = elm.closest('tr').querySelector('.value').textContent;
+            let res = confirm(`Pay ${value}?`)
+            if (!res) {
+                ev.preventDefault();
+                ev.stopPropagation();
+            }
+        })
+    }
+
+ 
+</script>

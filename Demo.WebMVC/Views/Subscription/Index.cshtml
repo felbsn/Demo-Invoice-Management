@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Demo.Entities.Subscription>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Closed)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address) (@item.Invoices?.Count())
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Closed)
+            </td>
+            <td>
+                @Html.ActionLink("Invoices", "Index", "Invoice",
+               new { subscriptionId = item.Id },
+               new { @class = "btn btn-primary" })  
+
+                @if (item.Closed)
+                {
+                    @Html.ActionLink("Open", "Open", new { subscriptionId = item.Id },
+                        new { @class = "btn btn-success" })
+                }
+                else
+                {
+                    @Html.ActionLink("Close", "Close", new { subscriptionId = item.Id },
+                        new { @class = "btn btn-danger" })
+                }
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

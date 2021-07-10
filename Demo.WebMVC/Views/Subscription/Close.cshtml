@@ -1,0 +1,46 @@
+﻿@model Demo.Entities.Subscription
+
+@{
+    ViewData["Title"] = "Close";
+}
+
+<h1>Close</h1>
+
+<div>
+    <h4>Subscription</h4>
+
+    @if (ViewData.ContainsKey("error"))
+    {
+<span class="text-danger"> @ViewData["message"] </span>
+    }
+    else
+    {
+        <span class="text-success"> @ViewData["message"] </span>
+
+    }
+ 
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Closed)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Closed)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ClientId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ClientId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

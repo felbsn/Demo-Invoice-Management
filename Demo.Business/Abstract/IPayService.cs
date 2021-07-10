@@ -7,7 +7,12 @@ namespace Demo.Business.Abstract
 {
     public interface IPayService
     {
-        PaymentResult Pay(int invoiceId, PaymentMethod method, int managerId );
+        PaymentResult Pay(int invoiceId, PaymentPredentials paymentPredentials, PaymentMethod method, int managerId );
+    }
+
+    public struct PaymentPredentials
+    {
+        // some important stuff
     }
 
     public enum PaymentStatus

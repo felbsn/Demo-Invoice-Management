@@ -7,6 +7,11 @@ using System.Text;
 
 namespace Demo.DataAccess
 {
+
+    /// <summary>
+    /// test context
+    /// all entities created with int PK*
+    /// </summary>
     public class DemoContext : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

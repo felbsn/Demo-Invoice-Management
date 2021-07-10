@@ -21,7 +21,7 @@ namespace Demo.Business.Concrete
             _managers = managers;
         }
 
-        public PaymentResult Pay(int invoiceId , PaymentMethod method , int id = 0)
+        public PaymentResult Pay(int invoiceId , PaymentPredentials paymentPredentials, PaymentMethod method , int id = 0)
         {
  
             Manager manager = null;

@@ -60,8 +60,15 @@ namespace Demo.WebMVC.Controllers
 
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="invoiceId"></param>
+        /// <param name="paymentPredentials">credentials actually not implemented </param>
+        /// <returns></returns>
         [HttpPost]
-        public IActionResult Pay(int? invoiceId)
+        public IActionResult Pay(int? invoiceId  , PaymentPredentials paymentPredentials)
         {
             if (invoiceId.HasValue)
             {
@@ -70,11 +77,11 @@ namespace Demo.WebMVC.Controllers
                 PaymentResult result = null;
                 if (managerId != null && int.TryParse(managerId, out var id))
                 {
-                    result = _payService.Pay(invoiceId.Value, PaymentMethod.ByManager, id);
+                    result = _payService.Pay(invoiceId.Value, paymentPredentials, PaymentMethod.ByManager, id);
                 }
                 else
                 {
-                    result = _payService.Pay(invoiceId.Value, PaymentMethod.ByClient, 0);
+                    result = _payService.Pay(invoiceId.Value, paymentPredentials, PaymentMethod.ByClient, 0);
                 }
 
                 if (result.Status != PaymentStatus.Success)
@@ -91,5 +98,7 @@ namespace Demo.WebMVC.Controllers
             }
         }
 
+
     }
+
 }

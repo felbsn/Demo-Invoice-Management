@@ -15,8 +15,7 @@ namespace Demo.DataAccess
             var str = @"Server=192.168.1.101\SQLEXPRESS,1433;Database=demo;User ID=test;Password=1A3p_iG";
 
             optionsBuilder
-                .UseSqlServer(str)
-                .UseLazyLoadingProxies();
+                .UseSqlServer(str);
         }
 
         public DbSet<Payment> Payments{ get; set; }

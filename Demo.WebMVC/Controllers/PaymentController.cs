@@ -9,12 +9,13 @@ using System.Threading.Tasks;
 namespace Demo.WebMVC.Controllers
 {
 
+    /// <summary>
+    ///  Only listing for listing purposes
+    /// </summary>
     [Authorize]
     public class PaymentController : Controller
     {
-
         IPaymentService _paymentService;
-
         public PaymentController(IPaymentService paymentService)
         {
             _paymentService = paymentService;

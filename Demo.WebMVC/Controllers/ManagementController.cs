@@ -14,7 +14,5 @@ namespace Demo.WebMVC.Controllers
         {
             return View();
         }
-
-
     }
 }
